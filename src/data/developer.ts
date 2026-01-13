@@ -65,8 +65,8 @@ My experience in collaborative environments has taught me the importance of clea
   phone: '+91 8530290669',
   availability: 'Open to opportunities for 2026',
   socialLinks: {
-    linkedin: 'https://linkedin.com/in/sahilkawadse',
-    github: 'https://github.com/sahilkawadse'
+    linkedin: 'https://www.linkedin.com/in/sahil-kawadse-34829624a/',
+    github: 'https://github.com/sahil8303'
   },
   portraitImage: sahilPhoto
 };
