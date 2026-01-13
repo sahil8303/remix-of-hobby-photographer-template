@@ -74,7 +74,7 @@ interface GradientTextProps {
 export function GradientText({ children, className = '' }: GradientTextProps) {
   return (
     <motion.span
-      className={`bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent bg-[length:200%_auto] ${className}`}
+      className={`bg-gradient-to-r from-purple-300 via-cyan-300 to-pink-300 bg-clip-text text-transparent bg-[length:200%_auto] drop-shadow-[0_0_30px_rgba(168,85,247,0.5)] ${className}`}
       animate={{
         backgroundPosition: ['0% center', '200% center'],
       }}
