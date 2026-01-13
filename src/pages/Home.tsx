@@ -8,12 +8,10 @@ import { SEOHead } from '@/components/seo/SEOHead';
 import { ArrowRight, Code, Database, Server, Terminal } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
-import { FloatingShapes } from '@/components/ui/FloatingShapes';
-import { ParticleField } from '@/components/ui/ParticleField';
-import { GradientText } from '@/components/ui/GlowingText';
+import { FloatingCodeIcons } from '@/components/ui/FloatingCodeIcons';
 
 /**
- * Homepage with immersive 3D hero section and featured projects grid
+ * Homepage with immersive hero section and featured projects grid
  * Showcases developer's best work with stunning animations
  */
 export default function Home() {
@@ -24,21 +22,24 @@ export default function Home() {
       <SEOHead />
       
       <div className="min-h-screen">
-        {/* Hero Section - Full viewport with 3D elements */}
-        <section className="relative h-screen w-full overflow-hidden bg-slate-950">
-          {/* 3D Floating Shapes */}
-          <FloatingShapes />
+        {/* Hero Section - Full viewport with floating code icons */}
+        <section className="relative h-screen w-full overflow-hidden bg-background">
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-cyan-500/10 dark:from-purple-500/20 dark:via-transparent dark:to-cyan-500/20" />
           
-          {/* Particle Field Overlay */}
-          <ParticleField />
+          {/* Floating Code Icons */}
+          <FloatingCodeIcons />
           
-          {/* Animated gradient overlay */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50 z-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5 }}
-          />
+          {/* Animated grid pattern */}
+          <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
+            <div 
+              className="absolute inset-0" 
+              style={{
+                backgroundImage: `linear-gradient(rgba(139, 92, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(139, 92, 246, 0.3) 1px, transparent 1px)`,
+                backgroundSize: '50px 50px'
+              }} 
+            />
+          </div>
 
           {/* Hero Content */}
           <div className="relative h-full flex flex-col items-center justify-center px-6 z-20">
@@ -61,7 +62,7 @@ export default function Home() {
                 >
                   <Badge 
                     variant="outline" 
-                    className="text-sm font-light px-5 py-2 border-purple-500/50 bg-purple-500/10 text-purple-300 backdrop-blur-sm"
+                    className="text-sm font-light px-5 py-2 border-purple-500/50 bg-purple-500/10 text-purple-600 dark:text-purple-300 backdrop-blur-sm"
                   >
                     <Terminal className="size-3 mr-2" />
                     Backend Developer
@@ -69,33 +70,43 @@ export default function Home() {
                 </motion.div>
               </motion.div>
 
-              {/* Main Title with Glow Effect */}
+              {/* Main Title */}
               <motion.h1
                 className="text-6xl md:text-8xl lg:text-9xl font-extralight tracking-widest"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.2 }}
               >
-                <GradientText className="font-light">
+                <motion.span
+                  className="bg-gradient-to-r from-purple-600 via-cyan-500 to-purple-600 dark:from-purple-400 dark:via-cyan-400 dark:to-purple-400 bg-clip-text text-transparent bg-[length:200%_auto]"
+                  animate={{
+                    backgroundPosition: ['0% center', '200% center'],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                >
                   {developerInfo.name.split(' ')[0].toUpperCase()}
-                </GradientText>
+                </motion.span>
               </motion.h1>
               
-              {/* Tagline with typewriter effect */}
+              {/* Tagline */}
               <motion.p
-                className="text-xl md:text-3xl font-light tracking-wide text-white/90"
+                className="text-xl md:text-3xl font-light tracking-wide text-foreground/90"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.4 }}
               >
-                <span className="text-cyan-400">&lt;</span>
+                <span className="text-cyan-500">&lt;</span>
                 {developerInfo.tagline}
-                <span className="text-cyan-400"> /&gt;</span>
+                <span className="text-cyan-500"> /&gt;</span>
               </motion.p>
 
               {/* Introduction */}
               <motion.p
-                className="text-base md:text-lg font-light leading-relaxed text-white/70 max-w-2xl mx-auto"
+                className="text-base md:text-lg font-light leading-relaxed text-muted-foreground max-w-2xl mx-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.6 }}
@@ -124,7 +135,7 @@ export default function Home() {
                     whileHover={{ scale: 1.1, y: -5 }}
                   >
                     <div className={`absolute inset-0 bg-gradient-to-r ${tech.color} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300`} />
-                    <div className="relative flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white/80 group-hover:text-white group-hover:border-white/30 transition-all duration-300">
+                    <div className="relative flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm text-foreground/80 group-hover:text-foreground group-hover:border-primary/30 transition-all duration-300">
                       <tech.icon className="size-4" />
                       <span className="text-sm font-light">{tech.label}</span>
                     </div>
@@ -142,7 +153,7 @@ export default function Home() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
                     to="/portfolio"
-                    className="group relative inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-medium overflow-hidden"
+                    className="group relative inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-medium overflow-hidden shadow-lg shadow-purple-500/25"
                   >
                     <span className="relative z-10">View Projects</span>
                     <ArrowRight className="size-4 relative z-10 transition-transform group-hover:translate-x-1" />
@@ -158,7 +169,7 @@ export default function Home() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-white/20 text-white/90 font-medium hover:bg-white/10 hover:border-white/30 transition-all duration-300"
+                    className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-border text-foreground font-medium hover:bg-accent hover:border-primary/30 transition-all duration-300"
                   >
                     Get In Touch
                   </Link>
