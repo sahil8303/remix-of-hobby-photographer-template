@@ -1,4 +1,5 @@
 import type { DeveloperInfo } from '@/types';
+import sahilPhoto from '@/assets/sahil-profile.jpg';
 
 export const developerInfo: DeveloperInfo = {
   name: 'Sahil Kawadse',
@@ -67,5 +68,5 @@ My experience in collaborative environments has taught me the importance of clea
     linkedin: 'https://linkedin.com/in/sahilkawadse',
     github: 'https://github.com/sahilkawadse'
   },
-  portraitImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080'
+  portraitImage: sahilPhoto
 };
