@@ -25,7 +25,7 @@ export default function Home() {
       
       <div className="min-h-screen">
         {/* Hero Section - Full viewport with 3D elements */}
-        <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-slate-950 via-purple-950/50 to-slate-950">
+        <section className="relative h-screen w-full overflow-hidden bg-slate-950">
           {/* 3D Floating Shapes */}
           <FloatingShapes />
           
