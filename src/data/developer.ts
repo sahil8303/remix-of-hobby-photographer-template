@@ -60,7 +60,7 @@ My experience in collaborative environments has taught me the importance of clea
       description: 'Co-authored and published research on optimizing RIS-assisted 6G networks, achieving significant improvements in Bit Error Rate (BER) and network capacity.'
     }
   ],
-  location: 'Vellore, India',
+  location: 'Nagpur, Maharashtra, India',
   email: 'kawadsesahil07@gmail.com',
   phone: '+91 8530290669',
   availability: 'Open to opportunities for 2026',
