@@ -32,7 +32,7 @@ My experience in collaborative environments has taught me the importance of clea
     }
   ],
   education: {
-    degree: 'Bachelor of Technology',
+    degree: 'Bachelor of Technology in Electronics and Communication',
     institution: 'Vellore Institute of Technology',
     location: 'Vellore, India',
     cgpa: '9.14',
