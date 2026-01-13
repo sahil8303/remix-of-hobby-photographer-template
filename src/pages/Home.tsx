@@ -48,8 +48,8 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.1 }}
             >
               <Badge variant="secondary" className="text-sm font-light px-4 py-1">
-                <Code className="size-3 mr-2" />
-                Full Stack Developer
+                <Server className="size-3 mr-2" />
+                Backend Developer
               </Badge>
             </motion.div>
 
@@ -93,7 +93,7 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-2 text-primary-foreground/70">
                 <Code className="size-5" />
-                <span className="text-sm font-light">React</span>
+                <span className="text-sm font-light">Express.js</span>
               </div>
               <div className="flex items-center gap-2 text-primary-foreground/70">
                 <Database className="size-5" />
