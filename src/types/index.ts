@@ -1,17 +1,16 @@
 /**
- * Core TypeScript interfaces for Frame Portfolio
- * Based on SPECIFICATION.md data model requirements
+ * Core TypeScript interfaces for Developer Portfolio
  */
 
-export type ProjectCategory = 'portraits' | 'landscapes' | 'editorial' | 'architecture' | 'documentary';
+export type ProjectCategory = 'fullstack' | 'backend' | 'frontend' | 'api';
 
-export type AspectRatio = 'portrait' | 'landscape' | 'square';
+export type TechStack = string[];
 
 export interface ProjectImage {
   id: string;
   src: string;
   alt: string;
-  aspectRatio: AspectRatio;
+  aspectRatio: 'portrait' | 'landscape' | 'square';
   caption?: string;
 }
 
@@ -23,29 +22,56 @@ export interface Project {
   coverImage: string;
   images: ProjectImage[];
   description: string;
-  client?: string;
-  camera?: string;
+  techStack: TechStack;
+  liveUrl?: string;
+  githubUrl?: string;
   location?: string;
   slug: string;
 }
 
-export interface PhotographerInfo {
+export interface DeveloperInfo {
   name: string;
   tagline: string;
   heroIntroduction: string;
   biography: string;
   approach: string;
-  awards: string[];
-  clients: string[];
-  education: string;
+  skills: {
+    languages: string[];
+    frameworks: string[];
+    databases: string[];
+    tools: string[];
+    softSkills: string[];
+  };
+  experience: {
+    title: string;
+    company: string;
+    period: string;
+    description: string[];
+  }[];
+  education: {
+    degree: string;
+    institution: string;
+    location: string;
+    cgpa: string;
+    period: string;
+  };
+  certificates: {
+    name: string;
+    issuer: string;
+    link?: string;
+  }[];
+  extracurricular: {
+    role: string;
+    organization: string;
+    description: string;
+  }[];
   location: string;
   email: string;
   phone: string;
   availability: string;
   socialLinks: {
-    instagram?: string;
     linkedin?: string;
-    behance?: string;
+    github?: string;
   };
   portraitImage: string;
 }
@@ -53,7 +79,7 @@ export interface PhotographerInfo {
 export interface ContactSubmission {
   name: string;
   email: string;
-  projectType: 'editorial' | 'commercial' | 'personal';
+  projectType: 'collaboration' | 'job' | 'freelance' | 'other';
   message: string;
   timestamp: Date;
 }

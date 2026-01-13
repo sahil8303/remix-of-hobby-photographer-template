@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar, MapPin, Camera, User } from 'lucide-react';
+import { Calendar, MapPin, Code, ExternalLink, Github } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { getProjectBySlug } from '@/data/projects';
 import { ImageWithLightbox } from '@/components/portfolio/ImageWithLightbox';
 import { Lightbox } from '@/components/portfolio/Lightbox';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 
 /**
  * Project detail page with hero image, gallery, and full-screen lightbox
@@ -105,25 +107,40 @@ export default function ProjectDetail() {
             </p>
           </div>
 
-          {/* Technical Details */}
-          <div className="grid md:grid-cols-2 gap-6 pt-4">
-            {project.camera && (
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm font-light tracking-wide uppercase text-muted-foreground">
-                  <Camera className="size-4" />
-                  <span>Camera</span>
-                </div>
-                <p className="font-light text-foreground">{project.camera}</p>
+          {/* Tech Stack */}
+          {project.techStack && project.techStack.length > 0 && (
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 text-sm font-light tracking-wide uppercase text-muted-foreground">
+                <Code className="size-4" />
+                <span>Tech Stack</span>
               </div>
+              <div className="flex flex-wrap gap-2">
+                {project.techStack.map((tech) => (
+                  <Badge key={tech} variant="secondary" className="font-light">
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Project Links */}
+          <div className="flex flex-wrap gap-4 pt-4">
+            {project.liveUrl && project.liveUrl !== '#' && (
+              <Button asChild variant="default">
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="size-4 mr-2" />
+                  Live Demo
+                </a>
+              </Button>
             )}
-            {project.client && (
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm font-light tracking-wide uppercase text-muted-foreground">
-                  <User className="size-4" />
-                  <span>Client</span>
-                </div>
-                <p className="font-light text-foreground">{project.client}</p>
-              </div>
+            {project.githubUrl && project.githubUrl !== '#' && (
+              <Button asChild variant="outline">
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                  <Github className="size-4 mr-2" />
+                  View Code
+                </a>
+              </Button>
             )}
           </div>
         </motion.div>
