@@ -26,8 +26,8 @@ export function Header() {
   const { isScrolled } = useScrollPosition();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
-  // Header is transparent only on homepage hero when not scrolled
-  const isTransparent = location.pathname === '/' && !isScrolled;
+  // Header styling based on scroll position
+  const isScrolledHeader = isScrolled || location.pathname !== '/';
 
   return (
     <motion.header
@@ -36,9 +36,9 @@ export function Header() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-        isTransparent
-          ? 'bg-transparent'
-          : 'bg-background/90 backdrop-blur-lg border-b border-border shadow-sm'
+        isScrolledHeader
+          ? 'bg-background/90 backdrop-blur-lg border-b border-border shadow-sm'
+          : 'bg-background/50 backdrop-blur-sm'
       )}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -46,12 +46,7 @@ export function Header() {
           {/* Logo */}
           <Link
             to="/"
-            className={cn(
-              'text-lg font-light tracking-widest transition-all duration-300',
-              isTransparent
-                ? 'text-white hover:text-white/80'
-                : 'text-foreground hover:text-foreground/80'
-            )}
+            className="text-lg font-light tracking-widest transition-all duration-300 text-foreground hover:text-foreground/80"
           >
             <motion.span
               initial={{ opacity: 0, x: -20 }}
@@ -73,22 +68,14 @@ export function Header() {
                 >
                   <Link
                     to={link.path}
-                    className={cn(
-                      "relative text-lg leading-7 font-light tracking-wide transition-colors duration-300",
-                      isTransparent
-                        ? "text-white hover:text-white/80"
-                        : "text-foreground hover:text-foreground/80"
-                    )}
+                    className="relative text-lg leading-7 font-light tracking-wide transition-colors duration-300 text-foreground hover:text-foreground/80"
                   >
                     {link.name}
                     {/* Active underline */}
                     {location.pathname === link.path && (
                       <motion.div
                         layoutId="activeNav"
-                        className={cn(
-                          "absolute -bottom-1 left-0 right-0 h-px",
-                          isTransparent ? "bg-white" : "bg-foreground"
-                        )}
+                        className="absolute -bottom-1 left-0 right-0 h-px bg-foreground"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -112,10 +99,7 @@ export function Header() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className={cn(
-                    'size-9',
-                    isTransparent && 'text-white hover:bg-white/10'
-                  )}
+                  className="size-9"
                   aria-label="Open menu"
                 >
                   <Menu className="size-5" />
