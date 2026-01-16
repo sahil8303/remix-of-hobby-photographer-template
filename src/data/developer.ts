@@ -3,7 +3,7 @@ import sahilPhoto from '@/assets/sahil-profile.jpg';
 
 export const developerInfo: DeveloperInfo = {
   name: 'Sahil Kawadse',
-  tagline: 'Backend Developer',
+  tagline: 'Aspiring Software Engineer',
   heroIntroduction: 'Building robust web applications with modern technologies and clean, maintainable code.',
   biography: `I'm an Electronics and Communication Engineering student at VIT Vellore, passionate about building scalable web applications and solving complex problems. With hands-on experience in full-stack development, I specialize in creating efficient backend systems and intuitive user interfaces.
 
